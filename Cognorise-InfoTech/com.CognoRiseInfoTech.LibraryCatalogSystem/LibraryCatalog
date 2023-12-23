@@ -1,0 +1,61 @@
+package com.CognoRiseInfoTech.LibraryCatalogSystem;
+import java.util.*;
+public class LibraryCatalog
+{
+	private HashMap <String,Book> bookMap;
+	public LibraryCatalog()
+	{
+		this.bookMap= new HashMap<>();
+	}
+	public void addBook(Book book)
+	{
+		bookMap.put(book.getTitles(), book);
+	}
+	public Book searchByTitle(String title)
+	{
+		return bookMap.get(title);
+	}
+	public ArrayList<Book> searchByAuthor(String author)
+	{
+		ArrayList<Book> result =new ArrayList<>();
+		for(Book book :bookMap.values())
+		{
+			result.add(book);
+		}
+		return result;
+	}
+	//for check out book Details method verify
+	public void checkOutBook(String title)
+	{
+		Book book= bookMap.get(title);
+		if(book !=null && !book.getStatus())
+		{
+			book.setStatus(true);
+			System.out.println("Book '"+title+"' checked out Successfully.");
+		}
+		else
+		{
+			System.out.println("Book "+title+"' not available for checkout.");
+		}
+	}
+	public void returnBook(String title)
+	{
+		Book book =bookMap.get(title);
+		if(book != null && book.getStatus())
+		{
+			book.setStatus(false);
+			System.out.println("Book '"+title+"'returned successfully");
+		}
+		else
+		{
+			System.out.println("Cannot return book '"+title+"'as it is not checked out");
+		}
+	}
+	public void displayCatalog() {
+		System.out.println("Libaray catalog");
+		for(Book book :bookMap.values())
+		{
+			System.out.println(book);
+		}
+	}
+}

@@ -1,0 +1,51 @@
+package com.CognoRiseInfoTech.LibraryCatalogSystem;
+
+public class Main 
+{
+	public static void main(String[] args) 
+	{
+		LibraryCatalog libraryCatalog =new LibraryCatalog();
+		//creating the library catalog object
+		
+		//adding Books to the catalog
+		Book book1 =new Book("Book Name 1"," AuthorName 1");
+		Book book2 =new Book("Book Name 2"," AuthorName 2");
+		Book book3 =new Book("Book Name 3"," AuthorName 3");
+		
+		//adding the book details into add Book method
+		libraryCatalog.addBook(book1);
+		libraryCatalog.addBook(book2);
+		libraryCatalog.addBook(book3);
+		
+		//Displaying the initial catalog
+		libraryCatalog.displayCatalog();
+		System.out.println("\n");
+		//checking out a book
+		libraryCatalog.checkOutBook("book Name 3");
+		System.out.println("\n");
+		
+		libraryCatalog.displayCatalog();
+		
+		System.out.println("\n");
+		
+		libraryCatalog.returnBook("Book Name 3");
+		System.out.println("\n");
+
+		libraryCatalog.displayCatalog();		
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

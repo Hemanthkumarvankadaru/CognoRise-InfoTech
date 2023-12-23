@@ -1,0 +1,77 @@
+package com.CognoRise_InfoTech.NumberGussingGame;
+
+import java.util.*;
+
+public class NumberGuessingGame {
+    public static void main(String[] args) {
+        // Step 1: Generate a random number using the random Class 
+        
+    	int randomNumber = (int)(Math.random()*10);
+    	
+        // Step 2: Prompt the user for input using Scanner
+        Scanner sc = new Scanner(System.in);
+        
+        //step 3: for Attempt counting tasking 10 attempts for game 
+        int attempts =1;
+        final int finalAttempts =11;
+        System.out.println("***********GAME Start************");
+        System.out.println("Guess the number 0 to 10 ");
+        
+        // Step 5: Use a loop to allow multiple attempts
+        while (attempts < finalAttempts) 
+        {
+            System.out.print("Enter your guessed number : ");
+            int guessedNumber = sc.nextInt();
+            //step :4 
+            		
+           //conditional statement(if)
+            
+            // feedback on whether the guess
+            
+            // Compare the user's guess with the generated number
+            if (guessedNumber == randomNumber)
+            {
+                System.out.println("Huray You won the game(❁´◡`❁)\n Gussed Number =" + guessedNumber + "\t Same as correct Number "+randomNumber);break;    
+            } 
+            else if (guessedNumber < randomNumber)
+            {
+                System.out.println("Gussed Number is too bit low .. try Again :) \n ");
+            } 
+            else
+            {
+                System.out.println("Your Gussed Number is too High ... Try again :) \n");
+            }
+
+            // Step 6
+            
+            attempts++;  //track the number of attempts
+            
+            if (attempts == finalAttempts)  //stop the game after a predefined limits.
+            {
+                System.out.println("Sorry, you've reached the maximum attempts....");
+                System.out.println("Correct Answer is "+randomNumber);
+            }
+        }//end of the while loop
+       
+        // Close the scanner
+        sc.close();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

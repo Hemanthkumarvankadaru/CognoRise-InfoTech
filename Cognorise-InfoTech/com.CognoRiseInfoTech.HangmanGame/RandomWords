@@ -1,0 +1,71 @@
+package com.CognoRiseInfoTech.HangmanGame;
+import java.util.*;
+public class RandomWords
+{
+	public static void main(String[] args)
+	{
+		//choice the civil list of words categories
+		String[] civil = {"Concrete","Structure","Foundation","Elevation","Earthquake","reinforcement","curing","construction"};
+		//8 civil engg things name is stored in the string civil array
+		
+		Random random =new Random();//creating object for random
+		//picking the random food Name by using Random method available in util package 
+		String randomWords =civil[random.nextInt(civil.length)];
+		/* this line of code is selected a random word from the array words
+		 * and storing it in the variable chosenWord.
+		 * It utilize the Math.random() method to generate a random
+		 * index within the bounds of the array
+		 *	-----------------------------------------
+		 *	creating a character array named displayWord with a length equal to the number 
+		 *	of the number of character 
+		*/
+		char[] displayWord =new char[randomWords.length()];
+		/* to display with underscores,representing the hidden letter of the chosenWords */
+		
+		for(int i=0 ;i<randomWords.length();i++)
+		{
+			displayWord[i] ='_';
+		}
+		int incorrectGuesses=0;
+		int maxIncorrect=5;
+		Scanner sc = new Scanner(System.in);
+		while(incorrectGuesses<maxIncorrect) //iteration the loop upto to 5 changes only
+		{
+			System.out.println("Current word :" +String.valueOf(displayWord));
+			//display current word is matches to typed word
+			System.out.println("Enter a letter :");
+			//input is taken from user in character format
+			char userWord= sc.next().charAt(0);
+			
+			//boolean the local variable identified element and initial value as false
+			Boolean identified =false; 
+			for(int i=0;i<randomWords.length();i++)
+			{
+				if(randomWords.charAt(i)==userWord)
+				{
+					displayWord[i] =userWord;
+					identified =true;
+				}
+			}//end of the for loop
+			
+			//conditional statements 
+			if(identified ==false)
+			{
+				incorrectGuesses++;
+				System.out.println("incorrect guess ! you have "+(maxIncorrect-incorrectGuesses)+" guesses left");
+			}
+			if(String.valueOf(displayWord).equals(randomWords))
+			{
+				System.out.println("kudos ! you guessed the word "+randomWords);break;
+			}
+		} //end of the while loop
+		
+		if(incorrectGuesses== maxIncorrect)
+		{
+			System.out.println("ouch Game is over ! you reached max tires ..!\n the word was : "+randomWords +"\n play Again..");
+		}
+		sc.close();
+		//closing the Scanner method for warning
+	}
+
+}
